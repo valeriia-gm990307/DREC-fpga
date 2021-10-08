@@ -9,7 +9,7 @@ reg [17:0] cnt;
 reg [1:0] c; //регистр указателя номера семисегментного индикатора
 always @(posedge sclk)
 begin
-	if (cnt == 18'b110000110101000000)
+	if (cnt == 18'd200000)
 	begin
 		cnt <= 0;
 		if (c == 2'b11)
@@ -50,7 +50,7 @@ begin
 		default: segments <= 7'b1111110;//0000001;
 		endcase 
 	end 
-	if (c == 2'b01)  
+	else if (c == 2'b01)  
 	begin
 		indikators <= 4'b1011;
 		case (data_indikators[3:0])
@@ -73,14 +73,14 @@ begin
 		default: segments <= 7'b1111110;//0000001;
 		endcase 
 	end
-	if (c == 2'b10)
+	else if (c == 2'b10)
 	begin
 		indikators <= 4'b1101;
 		
 		segments <= 7'b1111110;//0000001;
 		 
 	end
-	if (c == 2'b11)
+	else if (c == 2'b11)
 	begin
 		indikators <= 4'b1110;
 		
